@@ -1,6 +1,11 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs"
-  }
+    "compilerOptions": {
+        "module": "NodeNext",
+        "moduleResolution": "Node",
+        "baseUrl": "src",
+        "outDir": "dist",
+        "sourceMap": true,
+        "noImplicitAny": true,
+    },
+    "include": ["src/**/*"],
 }
