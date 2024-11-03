@@ -24,10 +24,10 @@ server.listen(process.env.PORT,()=>{
     
 })
 
-mongoose.Promise = Promise
-mongoose.connect (process.env.MONGO_URL).then(()=>{
-    console.log("Db connected");
+// mongoose.Promise = Promise
+// mongoose.connect (process.env.MONGO_URL).then(()=>{
+//     console.log("Db connected");
     
-})
+// })
  
 app.use('/user',router)
