@@ -10,3 +10,11 @@ jobs:
       - run: npm install
       - run: npm install -g nodemon ts-node
       - run: npm start
+
+      - name: build and push docker image
+        uses: mr-smithers-excellent/docker-build-push@v4
+        with:
+          image: jishnu79/typescript
+          registry: docker.io
+          username: ${{secret.DOCKER_USERNAME}}
+          password: ${{secret.DOCKER_PASSWORD}}
