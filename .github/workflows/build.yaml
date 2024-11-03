@@ -1,9 +1,33 @@
+# on: push
+# jobs: 
+#   build-node: 
+#     runs-on: ubuntu-latest
+#     container: node:18
+#     steps:
+#       - run: node --version
+#       - run: npm --version
+#       - uses: actions/checkout@v4
+#       - run: npm install
+#       - run: npm install -g nodemon ts-node
+#       - run: npm start
+
+#       - name: build and push docker image
+#         uses: mr-smithers-excellent/docker-build-push@v4
+#         with:
+#           image: jishnu79/typescript
+#           registry: docker.io
+#           username: ${{secrets.DOCKER_USERNAME}}
+#           password: ${{secrets.DOCKER_PASSWORD}}
 on: push
 jobs: 
   build-node: 
     runs-on: ubuntu-latest
-    container: node:18
     steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'  # Specify the Node.js version here
+
       - run: node --version
       - run: npm --version
       - uses: actions/checkout@v4
@@ -11,10 +35,10 @@ jobs:
       - run: npm install -g nodemon ts-node
       - run: npm start
 
-      - name: build and push docker image
+      - name: Build and push Docker image
         uses: mr-smithers-excellent/docker-build-push@v4
         with:
           image: jishnu79/typescript
           registry: docker.io
-          username: ${{secrets.DOCKER_USERNAME}}
-          password: ${{secrets.DOCKER_PASSWORD}}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
